@@ -15,7 +15,9 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-cream);
+            /* Sfondo naturale con pattern a foglie discreto */
+            background-color: #e9edc9;
+            background-image: url("https://www.transparenttextures.com/patterns/leaf.png");
             color: var(--text-dark);
             margin: 0;
             padding: 20px;
@@ -25,10 +27,10 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         header {
@@ -41,6 +43,12 @@
         .flyer-container {
             text-align: center;
             margin-bottom: 30px;
+            background: #eee; /* Grigio chiaro se l'immagine non carica */
+            border-radius: 10px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .flyer-container img {
@@ -48,42 +56,43 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            border: 5px solid white;
         }
 
-        h1 { color: var(--dark-green); margin-bottom: 10px; }
-        h2 { color: var(--dark-green); border-left: 5px solid var(--accent-orange); padding-left: 10px; }
+        h1 { color: var(--dark-green); margin-bottom: 5px; }
+        h2 { color: var(--dark-green); border-left: 5px solid var(--accent-orange); padding-left: 10px; margin-top: 30px; }
 
         .btn {
             display: inline-block;
             background: var(--dark-green);
-            color: white;
+            color: white !important;
             padding: 12px 25px;
             text-decoration: none;
             border-radius: 8px;
-            transition: transform 0.2s, background 0.2s;
+            transition: all 0.2s;
             font-weight: bold;
             margin: 10px 0;
             cursor: pointer;
             border: none;
         }
 
-        .btn:hover { background: #3e663a; transform: translateY(-2px); }
+        .btn:hover { background: #3e663a; transform: scale(1.05); }
         .btn-orange { background: var(--accent-orange); }
 
         .section { margin-bottom: 40px; }
         
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
         .card {
+            background: white;
             border: 1px solid #ddd;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .warning-box {
@@ -103,8 +112,10 @@
         }
 
         .qr-box img {
-            max-width: 150px;
+            max-width: 140px;
             margin-top: 10px;
+            border: 1px solid #eee;
+            padding: 5px;
         }
 
         .footer {
@@ -112,6 +123,14 @@
             font-size: 0.9em;
             color: #666;
             margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .tbd-list {
+            list-style: none;
+            padding: 0;
+            color: #777;
         }
     </style>
 </head>
@@ -124,68 +143,78 @@
     </header>
 
     <div class="flyer-container">
-        <img src="PROBEN2_FLYER.jpg" alt="Locandina Passeggiata a Sei Zampe">
+        <img src="PROBEN2_FLYER.png" alt="Locandina dell'evento (Caricamento in corso...)" onerror="this.alt='Immagine non trovata: controlla il nome del file su GitHub'">
     </div>
 
-    <div class="section" style="text-align: center; background: #e9edc9; padding: 20px; border-radius: 10px;">
+    <div class="section" style="text-align: center; background: #f9f9f9; padding: 20px; border-radius: 10px; border: 1px solid var(--dark-green);">
         <h2>Resta Aggiornato</h2>
-        <p>Iscriviti per sapere quando e dove si terranno le prossime passeggiate!</p>
+        <p>Ricevi i link e le date delle prossime uscite direttamente via mail.</p>
         <a href="https://forms.gle/88bBBaV7GkejQUgq8" class="btn btn-orange">Iscriviti alla Mail-List</a>
     </div>
 
     <div class="section">
-        <h2>Iscrizione Prossima Passeggiata</h2>
-        <div class="card" style="border: 2px solid var(--dark-green); max-width: 400px; margin: 0 auto;">
-            <h3>28 Marzo 2026</h3>
-            <p>📍 Campus Unipr / Parchi Parmensi</p>
-            <a href="https://docs.google.com/forms/d/1W_5aZFUQtT3pl2pBCVYdtDvZFaCWFfaA6j__7OSuUVI/edit" class="btn">Iscriviti Ora</a>
-            <div class="qr-box">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://docs.google.com/forms/d/1W_5aZFUQtT3pl2pBCVYdtDvZFaCWFfaA6j__7OSuUVI/edit" alt="QR Iscrizione">
+        <h2>Calendario 2026</h2>
+        <div class="grid">
+            <div class="card" style="border-top: 5px solid var(--dark-green);">
+                <h3>28 Marzo 2026</h3>
+                <p>📍 Campus Unipr / Parchi</p>
+                <a href="https://docs.google.com/forms/d/1W_5aZFUQtT3pl2pBCVYdtDvZFaCWFfaA6j__7OSuUVI/edit" class="btn">Iscriviti a questa data</a>
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://docs.google.com/forms/d/1W_5aZFUQtT3pl2pBCVYdtDvZFaCWFfaA6j__7OSuUVI/edit" alt="QR Iscrizione">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Prossimi Appuntamenti</h3>
+                <p>Le iscrizioni apriranno 2 settimane prima di ogni data:</p>
+                <ul class="tbd-list">
+                    <li>🗓️ Aprile 2026 (TBD)</li>
+                    <li>🗓️ Maggio 2026 (TBD)</li>
+                    <li>🗓️ Giugno 2026 (TBD)</li>
+                    <li>🗓️ Luglio 2026 (TBD)</li>
+                    <li>🗓️ Agosto 2026 (TBD)</li>
+                </ul>
+                <p><small>Iscriviti alla mail-list per i dettagli!</small></p>
             </div>
         </div>
     </div>
 
-    <div class="section" style="background: #fdf2f2; padding: 20px; border-radius: 10px; border: 1px solid #ecc;">
-        <h2>Area Questionari (Ricerca)</h2>
+    <div class="section" style="background: #fffcf0; padding: 25px; border-radius: 10px; border: 1px solid #eec;">
+        <h2>Area Questionari di Ricerca</h2>
         
         <div class="warning-box">
-            ⚠️ ATTENZIONE: Questi questionari devono essere compilati esclusivamente IL GIORNO DELL'ATTIVITÀ insieme alla Dr.ssa Chiara Canori.
+            ⚠️ DA COMPILARE SOLO IN PRESENZA<br>
+            Insieme alla Dr.ssa Canori durante l'attività.
         </div>
 
         <div style="text-align: center;">
-            <button onclick="toggleQuestionari()" class="btn" style="background: #666;">Mostra link (Solo in presenza)</button>
+            <button onclick="toggleQuestionari()" class="btn" style="background: #888;">Mostra Link Questionari</button>
         </div>
 
         <div id="area-questionari" class="hidden-content">
             <div class="grid">
                 <div class="card">
-                    <h4>Questionario PRE</h4>
-                    <p>Da compilare prima dell'inizio.</p>
-                    <a href="https://forms.gle/2ekccNUDkRH5q4Fs5" class="btn">Apri PRE</a>
+                    <h4>Pre-Attività</h4>
+                    <a href="https://forms.gle/2ekccNUDkRH5q4Fs5" class="btn">Vai al Questionario Pre</a>
                 </div>
                 <div class="card">
-                    <h4>Questionario POST</h4>
-                    <p>Da compilare al termine.</p>
-                    <a href="https://forms.gle/2ekccNUDkRH5q4Fs5" class="btn">Apri POST</a>
+                    <h4>Post-Attività</h4>
+                    <a href="https://forms.gle/EQWyxkAYoyECEJhBA" class="btn">Vai al Questionario Post</a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <p>Per informazioni: <strong>chiara.canori@unipr.it</strong></p>
-        <p>Organizzato dal Centro Ateneo per l'Inclusione</p>
+        <p><strong>Contatti:</strong> chiara.canori@unipr.it</p>
+        <p>Centro Ateneo per l'Inclusione - Università di Parma</p>
     </div>
 </div>
 
 <script>
     function toggleQuestionari() {
         var x = document.getElementById("area-questionari");
-        if (x.style.display === "block") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
-        }
+        x.style.display = (x.style.display === "block") ? "none" : "block";
     }
 </script>
 
