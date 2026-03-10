@@ -10,6 +10,7 @@
             --light-cream: #f4f1de;
             --accent-orange: #e07a5f;
             --text-dark: #333;
+            --warning-yellow: #fff3cd;
         }
 
         body {
@@ -37,6 +38,19 @@
             margin-bottom: 30px;
         }
 
+        .flyer-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .flyer-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 5px solid white;
+        }
+
         h1 { color: var(--dark-green); margin-bottom: 10px; }
         h2 { color: var(--dark-green); border-left: 5px solid var(--accent-orange); padding-left: 10px; }
 
@@ -50,11 +64,12 @@
             transition: transform 0.2s, background 0.2s;
             font-weight: bold;
             margin: 10px 0;
+            cursor: pointer;
+            border: none;
         }
 
         .btn:hover { background: #3e663a; transform: translateY(-2px); }
         .btn-orange { background: var(--accent-orange); }
-        .btn-orange:hover { background: #d06a4f; }
 
         .section { margin-bottom: 40px; }
         
@@ -71,6 +86,22 @@
             text-align: center;
         }
 
+        .warning-box {
+            background-color: var(--warning-yellow);
+            border: 2px dashed #856404;
+            color: #856404;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .hidden-content {
+            display: none;
+            margin-top: 20px;
+        }
+
         .qr-box img {
             max-width: 150px;
             margin-top: 10px;
@@ -82,8 +113,6 @@
             color: #666;
             margin-top: 40px;
         }
-
-        .status-tbd { color: #888; font-style: italic; }
     </style>
 </head>
 <body>
@@ -91,58 +120,74 @@
 <div class="container">
     <header>
         <h1>🐾 Passeggiata a Sei Zampe</h1>
-        <p>Benessere, movimento e socializzazione - Università di Parma</p>
+        <p>Università di Parma - Progetto PRO-BEN</p>
     </header>
 
+    <div class="flyer-container">
+        <img src="PROBEN2_FLYER.jpg" alt="Locandina Passeggiata a Sei Zampe">
+    </div>
+
     <div class="section" style="text-align: center; background: #e9edc9; padding: 20px; border-radius: 10px;">
-        <h2>Rimani Aggiornato</h2>
-        <p>Iscriviti alla mail-list per ricevere informazioni su date e luoghi!</p>
+        <h2>Resta Aggiornato</h2>
+        <p>Iscriviti per sapere quando e dove si terranno le prossime passeggiate!</p>
         <a href="https://forms.gle/88bBBaV7GkejQUgq8" class="btn btn-orange">Iscriviti alla Mail-List</a>
-        <div class="qr-box">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/88bBBaV7GkejQUgq8" alt="QR Mail List">
-        </div>
     </div>
 
     <div class="section">
-        <h2>Calendario Passeggiate 2026</h2>
-        <div class="grid">
-            <div class="card" style="border: 2px solid var(--dark-green);">
-                <h3>28 Marzo 2026</h3>
-                <p>📍 Primo incontro del ciclo</p>
-                <a href="https://docs.google.com/forms/d/1W_5aZFUQtT3pl2pBCVYdtDvZFaCWFfaA6j__7OSuUVI/edit" class="btn">Iscriviti Ora</a>
-                <div class="qr-box">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://docs.google.com/forms/d/1W_5aZFUQtT3pl2pBCVYdtDvZFaCWFfaA6j__7OSuUVI/edit" alt="QR 28 Marzo">
+        <h2>Iscrizione Prossima Passeggiata</h2>
+        <div class="card" style="border: 2px solid var(--dark-green); max-width: 400px; margin: 0 auto;">
+            <h3>28 Marzo 2026</h3>
+            <p>📍 Campus Unipr / Parchi Parmensi</p>
+            <a href="https://docs.google.com/forms/d/1W_5aZFUQtT3pl2pBCVYdtDvZFaCWFfaA6j__7OSuUVI/edit" class="btn">Iscriviti Ora</a>
+            <div class="qr-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://docs.google.com/forms/d/1W_5aZFUQtT3pl2pBCVYdtDvZFaCWFfaA6j__7OSuUVI/edit" alt="QR Iscrizione">
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="background: #fdf2f2; padding: 20px; border-radius: 10px; border: 1px solid #ecc;">
+        <h2>Area Questionari (Ricerca)</h2>
+        
+        <div class="warning-box">
+            ⚠️ ATTENZIONE: Questi questionari devono essere compilati esclusivamente IL GIORNO DELL'ATTIVITÀ insieme alla Dr.ssa Chiara Canori.
+        </div>
+
+        <div style="text-align: center;">
+            <button onclick="toggleQuestionari()" class="btn" style="background: #666;">Mostra link (Solo in presenza)</button>
+        </div>
+
+        <div id="area-questionari" class="hidden-content">
+            <div class="grid">
+                <div class="card">
+                    <h4>Questionario PRE</h4>
+                    <p>Da compilare prima dell'inizio.</p>
+                    <a href="https://forms.gle/2ekccNUDkRH5q4Fs5" class="btn">Apri PRE</a>
                 </div>
-            </div>
-
-            <div class="card">
-                <h3>Aprile - Agosto</h3>
-                <p class="status-tbd">Le date specifiche verranno comunicate tramite mail-list.</p>
-                <p>Maggio • Giugno • Luglio</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Ricerca e Monitoraggio</h2>
-        <p>Raccogliere informazioni sull'esperienza svolta è fondamentale per il progetto! Il giorno della passeggiata non dimenticarti di compilare i questionari</p>
-        <div class="grid">
-            <div class="card">
-                <h4>Questionario PRE</h4>
-                <a href="https://forms.gle/2ekccNUDkRH5q4Fs5" class="btn">Compila Pre</a>
-            </div>
-            <div class="card">
-                <h4>Questionario POST</h4>
-                <a href="https://forms.gle/EQWyxkAYoyECEJhBA" class="btn">Compila Post</a>
+                <div class="card">
+                    <h4>Questionario POST</h4>
+                    <p>Da compilare al termine.</p>
+                    <a href="https://forms.gle/2ekccNUDkRH5q4Fs5" class="btn">Apri POST</a>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <p>Per info: <strong>chiara.canori@unipr.it</strong></p>
-        <p>Organizzato dal Centro Ateneo per l'Inclusione - Università di Parma</p>
+        <p>Per informazioni: <strong>chiara.canori@unipr.it</strong></p>
+        <p>Organizzato dal Centro Ateneo per l'Inclusione</p>
     </div>
 </div>
+
+<script>
+    function toggleQuestionari() {
+        var x = document.getElementById("area-questionari");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
 
 </body>
 </html>
