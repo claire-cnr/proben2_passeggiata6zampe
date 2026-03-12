@@ -20,10 +20,8 @@
         }
 
         body {
-            /* Applicazione Montserrat */
             font-family: 'Montserrat', sans-serif;
             background-color: #e9edc9;
-            /* SFONDO PERSONALIZZATO */
             background-image: url("sfondoProben.jpg"); 
             background-size: cover;
             background-position: center;
@@ -35,9 +33,21 @@
             line-height: 1.6;
         }
 
+        /* Stile per il traduttore */
+        #google_translate_element {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.8);
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 40px auto 0 auto;
             background: rgba(255, 255, 255, 0.75);
             padding: 30px;
             border-radius: 20px;
@@ -65,19 +75,8 @@
             border: 4px solid white;
         }
 
-        h1 { 
-            color: var(--dark-green); 
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        h2 { 
-            color: var(--dark-green); 
-            border-left: 5px solid var(--accent-orange); 
-            padding-left: 15px; 
-            margin-top: 30px;
-            font-weight: 600;
-        }
+        h1 { color: var(--dark-green); margin-bottom: 5px; font-weight: 700; }
+        h2 { color: var(--dark-green); border-left: 5px solid var(--accent-orange); padding-left: 15px; margin-top: 30px; font-weight: 600; }
 
         .btn {
             display: inline-block;
@@ -87,7 +86,7 @@
             text-decoration: none;
             border-radius: 8px;
             transition: all 0.2s;
-            font-weight: 700; /* Testo bottoni più marcato */
+            font-weight: 700;
             margin: 10px 0;
             cursor: pointer;
             border: none;
@@ -135,10 +134,7 @@
             text-align: center;
         }
 
-        .hidden-content {
-            display: none;
-            margin-top: 20px;
-        }
+        .hidden-content { display: none; margin-top: 20px; }
 
         .footer {
             text-align: center;
@@ -154,10 +150,7 @@
             gap: 15px;
         }
 
-        .logo-footer {
-            max-width: 120px;
-            height: auto;
-        }
+        .logo-footer { max-width: 120px; height: auto; }
 
         .tbd-list {
             list-style: none;
@@ -166,12 +159,18 @@
             text-align: left;
             display: inline-block;
         }
+        
+        /* Nasconde la barra superiore brutta di Google Translate */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
     </style>
 </head>
 <body>
 
+<div id="google_translate_element"></div>
+
 <div class="container">
-<header>
+    <header>
         <h1>🐾 PASSEGGIATA A SEI ZAMPE</h1>
         <p style="margin-bottom: 5px; font-weight: 600;">Università di Parma - Progetto PROBEN2</p>
         <p style="font-size: 0.85em; color: #555; margin-top: 0;">Centro Ateneo per l'Inclusione</p>
@@ -246,7 +245,18 @@
         var x = document.getElementById("area-questionari");
         x.style.display = (x.style.display === "block") ? "none" : "block";
     }
+
+    // Funzione Google Translate
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'it',
+            includedLanguages: 'en,it',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
 </script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
