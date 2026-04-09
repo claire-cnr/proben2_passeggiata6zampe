@@ -33,7 +33,6 @@
             line-height: 1.6;
         }
 
-        /* Stile per il traduttore */
         #google_translate_element {
             position: fixed;
             top: 10px;
@@ -67,12 +66,20 @@
             margin-bottom: 30px;
         }
 
-        .flyer-container img {
+        .flyer-container img, .video-container video {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             border: 4px solid white;
+        }
+
+        .video-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(45, 76, 42, 0.05);
+            border-radius: 15px;
         }
 
         h1 { color: var(--dark-green); margin-bottom: 5px; font-weight: 700; }
@@ -160,7 +167,6 @@
             display: inline-block;
         }
         
-        /* Nasconde la barra superiore brutta di Google Translate */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
     </style>
@@ -202,6 +208,18 @@
                     <li>🌳 Luglio 2026 (TBD)</li>
                 </ul>
             </div>
+        </div>
+
+        <div class="video-section">
+            <h3 style="color: var(--dark-green); margin-top: 0;">Momenti della passeggiata di Marzo 🐾</h3>
+            <div class="video-container">
+                <video controls poster="anteprima-video.jpg">
+                    <source src="2803Campus.MOV" type="video/quicktime">
+                    <source src="2803Campus.mp4" type="video/mp4">
+                    Il tuo browser non supporta il tag video.
+                </video>
+            </div>
+            <p style="font-size: 0.9em; font-style: italic; margin-top: 10px;">Un piccolo assaggio delle nostre attività al Campus!</p>
         </div>
     </div>
 
@@ -245,7 +263,6 @@
         x.style.display = (x.style.display === "block") ? "none" : "block";
     }
 
-    // Funzione Google Translate
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'it',
